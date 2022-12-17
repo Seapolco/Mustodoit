@@ -1,3 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+}
+
+
+nav {
+  position: relative;
+  display: grid;
+  grid-row: 1/2;
+  grid-column: 1/3;
+  background-color: black;
+  width: 100%;
+  align-items: center;  
+  padding-left: 20px;
+  grid-template-columns: 70px 150px  1fr 150px;
+  border-bottom: solid rgb(53, 52, 52) 2px; 
+}
+
+.navStart {
+  display:flex;
+  flex-direction: row;
+  /* padding-top: 20px; */
+  /* gap: 10px; */
+}
+
+
+
+.hamIcon, .homeIcon {
+  padding: 4px;
+  user-select: none;
+}
+
+.hamIcon:hover, .homeIcon:hover {
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: rgb(62, 68, 75);
+}
+
+.navStart div {
+  color:white;
+}
+
+
+.logo {
+  position: relative;
+  width: auto;
+  height: 45px;
+  top: 7px; 
+}
+
+
+h1 {
+  /* -webkit-text-stroke: .5px white; */
+  color:rgb(219, 219, 219);
+  grid-column: 3/4;
+  font-family: 'Roboto Condensed';
+  font-weight:lighter;
+  text-align: center;
+}
+
+.navEnd {
+  display:grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 4/5;
+}
+
+
+.newTodoButton {
+  display: grid;
+  align-content:center;
+  width: 30px;
+  height: 30px;
+  color: rgb(42, 190, 190);
+  border: rgb(219, 219, 219) 2px solid;
+  background-color: black;
+  border-radius: 3px;
+}
+
+.newTodoButton:hover {
+  cursor:pointer;
+  transform: scale(0.95);
+}
+
+.newTodoButton:active {
+  cursor:pointer;
+  transform: scale(0.8);
+}
+
+.userIcon {
+  align-self: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: solid rgb(42, 190, 190) 2px;
+}
+
+@media only screen and (max-width: 550px) {
+    h1 {
+      display:none
+    }
+    nav {
+      /* grid-template-columns: 70px 150px  1fr 150px; */
+      /* grid-template-columns: 70px 200px 1fr; */
+      display:flex;
+    }
+
+    .logoWrapper {
+      margin: auto;
+    }
+
+    .userIcon {
+
+      height: 30px;
+      width: 30px;
+ 
+    }
+
+    .newTodoButton {
+
+      width: 20px;
+      height: 20px;
+
+    }
+
+    .navEnd {
+      /* grid-column: 3/4; */
+      margin-right: 50px;
+      width: 50px;   
+    }
+
+    .newTodoWrapper {
+      justify-self: end;
+      padding-right: 20px; 
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
