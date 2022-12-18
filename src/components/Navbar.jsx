@@ -23,7 +23,7 @@ const Navbar = (props) => {
 
         <nav>
         <div className="navStart">
-          <div onClick={props.handleClick} className="hamIconWrapper"><span className="material-symbols-outlined hamIcon">
+          <div onClick={props.handleNavClick} className="hamIconWrapper"><span className="material-symbols-outlined hamIcon">
             menu
             </span></div>
           <div className="homeIconWrapper"><span className="material-symbols-outlined homeIcon">
@@ -35,7 +35,7 @@ const Navbar = (props) => {
         </div>
         <h1>MUSTODOIT</h1>
         <div className="navEnd">
-          <div className="newTodoWrapper">
+          <div onClick={props.handleNewClick} className="newTodoWrapper">
             <button className="newTodoButton">+</button>
           </div>
           
