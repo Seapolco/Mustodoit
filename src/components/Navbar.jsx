@@ -1,14 +1,29 @@
-import react from 'react';
+import React from 'react';
 import seaCreature from '../assets/images/seaCreature.png';
 import slothsshrug from '../assets/images/slothsshrug.png';
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  // hamIcon.addEventListener('click', (e) => {
+  //   // console.log(sidebar.style.visibility);
+  //   if(sidebar.style.visibility === 'visible') {
+      
+  //     sidebar.setAttribute('class','sidebar');
+  //     sidebar.style.visibility = 'hidden';
+  //   } else {
+  //     sidebar.setAttribute('class', 'sidebar open')
+      
+  //     sidebar.style.visibility = 'visible';
+  //   }
+  //   // console.log('ham!!!!!!!!!');
+    
+  // })
 
     return (
 
         <nav>
         <div className="navStart">
-          <div className="hamIconWrapper"><span className="material-symbols-outlined hamIcon">
+          <div onClick={props.handleClick} className="hamIconWrapper"><span className="material-symbols-outlined hamIcon">
             menu
             </span></div>
           <div className="homeIconWrapper"><span className="material-symbols-outlined homeIcon">
