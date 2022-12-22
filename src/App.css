@@ -421,6 +421,153 @@ padding-bottom: 10px;
   cursor: pointer;
 } 
 
+/************* D I S P L A Y   A L L    T O D O S ***********************/
+
+
+.displayTodos {
+  display: grid;
+  position: relative;
+  z-index:1;
+  background-color: rgb(34, 33, 33);
+  width: 40vw;
+  height: fit-content;
+  /* border:solid black 4px; */
+  grid-template-rows: 60px 1fr;
+}
+
+.todayDateContainer {
+  
+  display: grid;
+  align-items:center;
+  grid-template-columns: 1fr 2fr 4fr;
+}
+
+.today {
+  color:white;
+  font-size: 1.75rem;
+  font-weight: bold;
+  display:grid;
+  justify-content: end;
+  align-items: center;
+  /* border:solid black 4px */
+}
+
+.todaysDate {
+  color:rgb(107, 107, 119);
+  display:grid;
+  padding-left: 10px;
+  /* border:solid black 4px; */
+  justify-content: start;
+  align-items: center;
+}
+
+.todoListContainer {
+  /* border:solid black 4px; */
+  height: 100%;
+  padding: 20px;
+}
+
+.todoList {
+  position:relative;
+  font-size: 1rem;
+  color:white;
+  list-style-type: none;
+  border-top: solid slategrey 1px;
+}
+
+.todoListItem{ 
+  position: relative;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  padding: 5px;
+  /* border-top:solid black 2px; */
+  border-bottom:solid slategrey 1px;
+
+}
+
+.todoProject {
+  grid-column: 2/3;
+}
+
+.checkIcon {
+  user-select: none;
+  display: grid;
+  top: 25px;
+  left: 10px;
+  position: relative;
+  place-items:center;
+  align-items: center;
+  grid-column: 1/2;
+  border: solid aqua 2px;
+  background-color: rgba(0, 0, 0, 0);
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  /* z-index:2 */
+}
+
+.tick {
+  user-select: none;
+  position:absolute;
+  /* z-index:1; */
+  left:1.25px;
+  font-size: 9px;
+}
+
+.checkIcon:hover {
+  cursor: pointer;
+  background-color: green;
+}
+
+
+.checkIcon:active {
+  cursor: pointer;
+  background-color: green;
+  transform: scale(0.8);
+}
+
+.todoListItem p  {
+  grid-column: 2/3;
+}
+
+.High {
+  color:red;
+}
+.Medium {
+  color: orange;
+}
+.Low {
+  color:cornflowerblue;   
+}
+
+/*.todoTitle, .todoDescription, .todoPriority, .priority .todoDate {
+  grid-column: 2/3;
+  /* disable above for vertical stretch 
+}*/
+
+
+.prioritySelectWrapper > label {
+  padding-right: 5px;
+  color: whitesmoke;
+}
+
+.todoDate{
+  color: greenyellow;
+}
+
+.todoTitle {
+  font-size: 1.1rem;
+}
+
+.todoDescription {
+  color: rgb(107, 107, 119);  
+  font-size: .9rem;
+}
+
+.todoProject {
+  font-size: .9rem;
+}
+
 
 
 
