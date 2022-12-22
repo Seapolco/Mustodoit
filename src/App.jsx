@@ -79,7 +79,7 @@ useEffect(() => {
       <>
       <Navbar handleNavClick={handleNavClick} handleNewClick={handleNewClick}  />
       <Sidebar showSidebar={showSidebar}/>
-      <MainContent showForm={showForm} />
+      <MainContent showForm={showForm} allTodos={allTodos} />
       </>
     )
 }

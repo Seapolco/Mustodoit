@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoForm from './TodoForm';
+import DisplayAllTodos from './DisplayAllTodos';
 
 const MainContent = (props) => {
 
@@ -7,10 +8,9 @@ const MainContent = (props) => {
     return (
         <main>
             <TodoForm showForm={props.showForm}/>
-            <h1>Main Content</h1>
-            
+            <DisplayAllTodos allTodos={props.allTodos}/>
         </main>
-    )
+    ) 
 }
 
 
