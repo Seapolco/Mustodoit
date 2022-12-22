@@ -3,7 +3,8 @@ import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import TodoForm from './components/TodoForm';
+//import TodoForm from './components/TodoForm';
+import MainContent from './components/MainContent';
 
 function App() {
 
@@ -21,39 +22,44 @@ function App() {
     this.project = `Project: ${project}`
   }
 
-
-  // Update the state with any existing local storage todos.
-
-  useEffect(() => {
-    const localStorageTodos = JSON.parse(localStorage.getItem('allTodos'));
-    if (localStorageTodos) {
-     setAllTodos(localStorageTodos);
-    }
-  }, []);
-
-  /// TEST
-
   const addPomdoro = new Todo(
-    'Pomdoro timer',
-    'Create a pomdoro feature',
-    'High',
-    'Today',
-    'Mustodoit'
-    )
+  'Pomdoro timer',
+  'Create a pomdoro feature',
+  'High',
+  'Today',
+  'Mustodoit'
+  )
 
- useEffect(() => {
 
-  setAllTodos((prevTodos) => [...prevTodos, addPomdoro])
+
+
+  
+
+
+// May be redundant when functionality is resumed.
+
+useEffect(() => {
+
+  setAllTodos((prevTodos) => {
+    let isDup = false;
+    if(prevTodos) {
+      prevTodos.forEach((e) => {
+        if(e.title === 'Pomdoro timer') isDup = true;
+      })
+    }
     
- }, [])
+    if(!isDup) {
+      return[...prevTodos, addPomdoro]
+    }
+    else {
+      return prevTodos
+    }
+  })
 
- // May be redundant when functionality is resumed.
 
- useEffect(() => {
   localStorage.setItem('allTodos', JSON.stringify(allTodos))
- },[allTodos])
 
-
+},[allTodos])
 
  
 
@@ -73,7 +79,7 @@ function App() {
       <>
       <Navbar handleNavClick={handleNavClick} handleNewClick={handleNewClick}  />
       <Sidebar showSidebar={showSidebar}/>
-      <TodoForm showForm={showForm}/>
+      <MainContent showForm={showForm} />
       </>
     )
 }

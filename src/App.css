@@ -286,6 +286,20 @@ h1 {
   background-color: white;
 }
 
+/***************** M A I N ******************************************/
+
+main {
+  padding: 30px;
+  display: grid;
+  position: relative;
+  /* justify-items: center; */
+  grid-row: 2/4;
+  grid-column: 2/3;
+  height:100%;
+  width: 100%;
+  
+}
+
 /****************** T O D O     F O R M **************************** */
 
 .formContainer {
