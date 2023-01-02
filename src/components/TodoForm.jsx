@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const TodoForm = (props) => {
 
-    let formClass = props.showForm ? "todoForm show" : "todoForm";
-    let containerClass = props.showForm ? "formContainer show" : "formContainer";
+  
+
+    const [formClass, setFormClass] = React.useState('todoForm');
+    const [containerClass, setContainerClass] = React.useState('formContainer')
+
+    useEffect(() => {
+        props.showForm && setFormClass('todoForm show')
+        props.showForm && setContainerClass("formContainer show")
+    }, [props])
+
+    const localTodos = JSON.parse(localStorage.getItem('allTodos'))
 
 
+    function handleSubmit(e) {
+
+        e.preventDefault();
+
+        setFormClass('todoForm')
+        setContainerClass('formContainer')
+
+        localTodos.push({newTodo:'sdfsfsfsffdfs'})
+        localStorage.setItem('allTodos', JSON.stringify(localTodos))
+        console.log(localTodos)
+    }
     return (
         <div className={containerClass}>
                 <form className={formClass}>
@@ -43,8 +63,8 @@ const TodoForm = (props) => {
                     <select name="projects" id="projectsFormSelect"></select>
                 </div>
                 <div className="todoFormButtonWrapper">
-                    <div className="cancelTodoWrapper"><button className="cancelTodoButton">Cancel</button></div>
-                    <div className="addTodoWrapper"><button className="addTodoButton">Add</button></div>
+                    <div  className="cancelTodoWrapper"><button onClick = {handleSubmit} className="cancelTodoButton">Cancel</button></div>
+                    <div      className="addTodoWrapper"><button onClick = {handleSubmit} className="addTodoButton">Add</button></div>
                 </div>
                 </form>
             </div>

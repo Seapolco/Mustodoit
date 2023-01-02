@@ -12,7 +12,9 @@ function App() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
-  const [allTodos, setAllTodos] = useState([])
+  const localTodos = JSON.parse(localStorage.getItem('allTodos'))
+
+  const [allTodos, setAllTodos] = useState(localTodos || [])
 
   function Todo(title, description, priority, date, project) {
     this.title = title

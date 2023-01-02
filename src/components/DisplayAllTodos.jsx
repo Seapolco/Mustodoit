@@ -7,7 +7,7 @@ const AllTodos = (props) => {
 
     const allTodoListItems = props.allTodos.map((todo,index) => {
         return <TodoListItem 
-                key={index}
+                key={crypto.randomUUID()}
                 title={todo.title}
                 description={todo.description}
                 priority={todo.priority}
