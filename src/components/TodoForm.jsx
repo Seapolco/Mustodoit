@@ -2,10 +2,20 @@ import React, { useEffect } from 'react';
 
 const TodoForm = (props) => {
 
+        // Need to add projects to project select drop down
+
   
 
     const [formClass, setFormClass] = React.useState('todoForm');
     const [containerClass, setContainerClass] = React.useState('formContainer')
+    const [currentTodo, setCurrentTodo] = React.useState(
+        {
+            title: null,
+            description: null,
+            date: null,
+            priority: null
+        }
+    )
 
     useEffect(() => {
         props.showForm && setFormClass('todoForm show')
@@ -22,10 +32,36 @@ const TodoForm = (props) => {
         setFormClass('todoForm')
         setContainerClass('formContainer')
 
-        localTodos.push({newTodo:'sdfsfsfsffdfs'})
+        localTodos.push(currentTodo)
+        //localStorage.setItem('allTodos', JSON.stringify(localTodos))
+
         localStorage.setItem('allTodos', JSON.stringify(localTodos))
         console.log(localTodos)
     }
+
+
+    function Todo(title, description, priority, date, project) {
+        this.title = title
+        this.description = description
+        this.priority = `Priority: ${priority}`
+        this.date = date
+        this.project = `Project: ${project}`
+      }
+
+      function storeInput(e) {
+        let {name, value} = e.target
+
+        setCurrentTodo((prevTodo) => {
+            return {
+                ...prevTodo,
+                [name] : value
+            }
+        })
+    
+        //console.log({name,value})
+        console.log(currentTodo)
+      }
+    
 
     /* APP code
 
@@ -51,11 +87,7 @@ const TodoForm = (props) => {
 
     */
 
-  function storeInput(e) {
-    let {name, value} = e.target
 
-    console.log({name,value})
-  }
     return (
         <div className={containerClass}>
                 <form className={formClass}>
