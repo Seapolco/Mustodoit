@@ -67,6 +67,10 @@ useEffect(() => {
 
  console.log(allTodos)
 
+ function linking() {
+  console.log('link')
+ }
+
   function handleNavClick () {
     console.log("In the APP")
     setShowSidebar(!showSidebar)
@@ -77,11 +81,15 @@ useEffect(() => {
     setShowForm(!showForm)
   }
 
+  function setRefresh() {
+    return true
+  }
+
     return (
       <>
       <Navbar handleNavClick={handleNavClick} handleNewClick={handleNewClick}  />
       <Sidebar showSidebar={showSidebar}/>
-      <MainContent showForm={showForm} allTodos={allTodos} />
+      <MainContent setAllTodos={setAllTodos} showForm={showForm} handleNewClick={handleNewClick} allTodos={allTodos} />
       </>
     )
 }

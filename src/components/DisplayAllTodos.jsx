@@ -3,6 +3,12 @@ import TodoListItem from './TodoListItem'
 
 const AllTodos = (props) => {
 
+    const [refresh, setRefresh] = React.useState(props.refresh)
+
+    React.useEffect(() => {
+        setRefresh(!props.refresh)
+    },[props.refresh])
+
     console.log(props.allTodos, 'inside ALLTODOS')
 
     const allTodoListItems = props.allTodos.map((todo,index) => {
