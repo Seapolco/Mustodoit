@@ -16,6 +16,47 @@ function App() {
 
   const [allTodos, setAllTodos] = useState(localTodos || [])
 
+  const [allProjects, setAllProjects] = useState([]);
+
+
+
+  function Project(title, color, tasks) {
+    this.title = title;
+    this.color = color;
+    this.tasks = [...tasks]
+  }
+
+  const readBooks = new Project("Read Books", "red", ["Why Beliefs Matter", "Grokking Algorithms"]);
+  const algo = new Project("Improve DSA", "yellow", ['Finish 5 Medium Leetcodes', 'Finish Colt Course'] )
+
+  console.log(readBooks)
+
+  // HORRENDOUS TEMP CODE, remove after project functionality.
+
+  useEffect(() => {
+    setAllProjects((prevProjects) => {
+      let isDup = false;
+
+      prevProjects.forEach((e) => {
+        if(e.title === "Read Book" || e.title === "Improve DSA") {
+          isDup = true;
+        }
+      })
+      if(!isDup) {
+        return [...prevProjects, readBooks, algo]
+      }
+      else {
+        return [prevProjects]
+      }
+    })
+
+
+  },[])
+
+  
+
+  console.log(allProjects)
+
   function Todo(title, description, priority, date, project) {
     this.title = title
     this.description = description
@@ -40,28 +81,29 @@ function App() {
 
 // May be redundant when functionality is resumed.
 
-useEffect(() => {
+// useEffect(() => {
 
-  setAllTodos((prevTodos) => {
-    let isDup = false;
-    if(prevTodos) {
-      prevTodos.forEach((e) => {
-        if(e.title === 'Pomdoro timer') isDup = true;
-      })
-    }
-    
-    if(!isDup) {
-      return[...prevTodos, addPomdoro]
-    }
-    else {
-      return prevTodos
-    }
-  })
+//   setAllTodos((prevTodos) => {
+
+//     let isDup = false;
+
+//     prevProjects.forEach((e) => {
+//       if(e.title === "Read Book" || e.title === "Improve DSA") {
+//         isDup = true;
+//       }
+//     })
+//     if(!isDup) {
+//       return [...prevProjects, readBooks, algo]
+//     }
+
+//       return[...prevTodos, addPomdoro]
+
+//   })
 
 
-  localStorage.setItem('allTodos', JSON.stringify(allTodos))
+//   localStorage.setItem('allTodos', JSON.stringify(allTodos))
 
-},[allTodos])
+// },[])
 
  
 
@@ -89,7 +131,7 @@ useEffect(() => {
       <>
       <Navbar handleNavClick={handleNavClick} handleNewClick={handleNewClick}  />
       <Sidebar showSidebar={showSidebar}/>
-      <MainContent setAllTodos={setAllTodos} showForm={showForm} handleNewClick={handleNewClick} allTodos={allTodos} />
+      <MainContent allProjects={allProjects} setAllTodos={setAllTodos} showForm={showForm} handleNewClick={handleNewClick} allTodos={allTodos} />
       </>
     )
 }

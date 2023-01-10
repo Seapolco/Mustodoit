@@ -7,7 +7,7 @@ const MainContent = (props) => {
 
     return (
         <main>
-            <TodoForm setAllTodos={props.setAllTodos} showForm={props.showForm} handleNewClick={props.handleNewClick} />
+            <TodoForm allProjects={props.allProjects} setAllTodos={props.setAllTodos} showForm={props.showForm} handleNewClick={props.handleNewClick} />
             <DisplayAllTodos setAllTodos={props.setAllTodos} allTodos={props.allTodos}/>
         </main>
     ) 

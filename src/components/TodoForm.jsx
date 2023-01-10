@@ -4,6 +4,12 @@ const TodoForm = (props) => {
 
         // Need to add projects to project select drop down
 
+    console.log(props.allProjects)
+
+
+    const projectSelectOptions = props.allProjects.map((e) => {
+        return <option key={crypto.randomUUID()} style={{color: e.color}} value={e.title}>{e.title}</option>
+    })
     
     console.log(props.handleNewClick)
 
@@ -14,6 +20,7 @@ const TodoForm = (props) => {
             title: null,
             description: null,
             date: null,
+            project:null,
             priority: null
         }
     )
@@ -23,7 +30,7 @@ const TodoForm = (props) => {
         props.showForm && setContainerClass("formContainer show")
     }, [props])
 
-    const localTodos = JSON.parse(localStorage.getItem('allTodos'))
+    const localTodos = JSON.parse(localStorage.getItem('allTodos')) || [];
 
 
     function handleSubmit(e) {
@@ -48,6 +55,12 @@ const TodoForm = (props) => {
        // localStorage.setItem('allTodos', JSON.stringify(allTodos))
 
         //props.refresh();
+    }
+
+    function cancelSubmit(e) {
+        e.preventDefault();
+        setFormClass('todoForm')
+        setContainerClass('formContainer')
     }
 
 
@@ -134,10 +147,14 @@ const TodoForm = (props) => {
                     <label htmlFor="projectsFormSelect"><span className="material-symbols-outlined">
                         list_alt
                         </span></label>
-                    <select onChange= {storeInput} name="projects" id="projectsFormSelect"></select>
+                    <select onChange= {storeInput} name="projects" id="projectsFormSelect">
+                        {
+                            projectSelectOptions
+                        }
+                    </select>
                 </div>
                 <div className="todoFormButtonWrapper">
-                    <div  className="cancelTodoWrapper"><button onClick = {handleSubmit} className="cancelTodoButton">Cancel</button></div>
+                    <div  className="cancelTodoWrapper"><button onClick = {cancelSubmit} className="cancelTodoButton">Cancel</button></div>
                     <div      className="addTodoWrapper"><button onClick = {handleSubmit} className="addTodoButton">Add</button></div>
                 </div>
                 </form>
