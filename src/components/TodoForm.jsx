@@ -17,9 +17,6 @@ const TodoForm = (props) => {
 
     const [selectValue, setSelectValue] = React.useState('Read books')
 
-    function selectChange(e) {
-        console.log(e.target)
-      }
 
 
     const [formClass, setFormClass] = React.useState('todoForm');
@@ -29,7 +26,7 @@ const TodoForm = (props) => {
             title: null,
             description: null,
             date: null,
-            projects: null,
+            project: null,
             priority: null
         }
     )
@@ -84,7 +81,7 @@ const TodoForm = (props) => {
       function storeInput(e) {
         let {name, value} = e.target;
 
-        if(name === 'projects') {
+        if(name === 'project') {
             setSelectValue(e.target.value)
         }
 
@@ -160,7 +157,7 @@ const TodoForm = (props) => {
                     <label htmlFor="projectsFormSelect"><span className="material-symbols-outlined">
                         list_alt
                         </span></label>
-                    <select value={selectValue} onChange= {storeInput} name="projects" id="projectsFormSelect">
+                    <select value={selectValue} onChange= {storeInput} name="project" id="projectsFormSelect">
                         {
                             projectSelectOptions
                         }
