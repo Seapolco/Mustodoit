@@ -4,7 +4,7 @@ const TodoForm = (props) => {
 
         // Need to add projects to project select drop down
 
-    console.log(props.allProjects)
+    console.log('ALL PROJECTS',props.allProjects)
 
 
     const projectSelectOptions = props.allProjects.map((e) => {
@@ -13,6 +13,15 @@ const TodoForm = (props) => {
     
     console.log(props.handleNewClick)
 
+    // Controlled component for drop down select
+
+    const [selectValue, setSelectValue] = React.useState('Read books')
+
+    function selectChange(e) {
+        console.log(e.target)
+      }
+
+
     const [formClass, setFormClass] = React.useState('todoForm');
     const [containerClass, setContainerClass] = React.useState('formContainer')
     const [currentTodo, setCurrentTodo] = React.useState(
@@ -20,7 +29,7 @@ const TodoForm = (props) => {
             title: null,
             description: null,
             date: null,
-            project:null,
+            projects: null,
             priority: null
         }
     )
@@ -73,7 +82,11 @@ const TodoForm = (props) => {
     //   }
 
       function storeInput(e) {
-        let {name, value} = e.target
+        let {name, value} = e.target;
+
+        if(name === 'projects') {
+            setSelectValue(e.target.value)
+        }
 
         setCurrentTodo((prevTodo) => {
             return {
@@ -86,7 +99,7 @@ const TodoForm = (props) => {
         console.log(currentTodo)
       }
     
-
+ 
     /* APP code
 
       function Todo(title, description, priority, date, project) {
@@ -147,7 +160,7 @@ const TodoForm = (props) => {
                     <label htmlFor="projectsFormSelect"><span className="material-symbols-outlined">
                         list_alt
                         </span></label>
-                    <select onChange= {storeInput} name="projects" id="projectsFormSelect">
+                    <select value={selectValue} onChange= {storeInput} name="projects" id="projectsFormSelect">
                         {
                             projectSelectOptions
                         }
